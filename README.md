@@ -24,7 +24,7 @@ Wtwitch is generally considered to be feature-complete. I will continue to fix b
 - Maintain compatibility with current Twitch API, including adding support for API request(s) useful to wtwitch users
 - Improve translations
 - Add a configuration menu so there are not a lot of configuration commands
-- Any [requested enhancements](https://github.com/krathalan/wtwitch/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+- Any [requested enhancements](https://codeberg.org/krathalan/wtwitch/issues)
 
 ## How to use
 Wtwitch has the following commands:
@@ -75,7 +75,7 @@ You may need to install `curl` and `jq`. You may be able to install `streamlink`
 Afterwards, [clone the repo](#other_distros).
 
 ### Other distros
-Clone the repository: `git clone https://github.com/krathalan/wtwitch`
+Clone the repository: `git clone https://codeberg.org/krathalan/wtwitch`
 
 Then add the `src/` directory in the cloned wtwitch repo to your `$PATH`. You may need to install `curl`, `jq`, and `streamlink`. See this page for distro-specific streamlink installation instructions: https://streamlink.github.io/install.html
 
@@ -113,9 +113,9 @@ To start wtwitch in debug mode, set the environment variable WTWITCH_DEBUG=on. Y
 
 > `$ WTWITCH_DEBUG=on wtwitch [command] &> debug.log`
 
-Then paste/upload the contents of the `debug.log` file to your favorite paste service (e.g. https://gist.github.com/) and provide a link in your report.
+Then paste/upload the contents of the `debug.log` file to your favorite paste service (e.g. https://0x0.st/) and provide a link in your report.
 
-Please file feature requests and report any bugs at: https://github.com/krathalan/wtwitch/issues
+Please file feature requests and report any bugs at: https://codeberg.org/krathalan/wtwitch/issues
 
 ## Contributions
 All contributions are welcome. Please try to adhere to the [Google Shell Style Guide](https://google.github.io/styleguide/shell.xml). Make sure your new code passes Shellcheck with no "shellcheck disable=SCXXXX" lines. Try looking at [Dylan's Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) before using an external program.

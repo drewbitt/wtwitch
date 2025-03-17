@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Description: Bash completion file for wtwitch.
-#    Homepage: https://github.com/krathalan/wtwitch
+#    Homepage: https://codeberg.org/krathalan/wtwitch
 #
 # Copyright (C) 2020 krathalan
 #

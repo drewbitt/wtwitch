@@ -161,7 +161,7 @@ User-contributed translations are welcome!
 
 # BUGS
 
-Please file requests and report any bugs at: https://github.com/krathalan/wtwitch/issues
+Please file requests and report any bugs at: https://codeberg.org/krathalan/wtwitch/issues
 
 *If you are reporting a bug, please attach a debug log.*
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Description: Browse and watch Twitch without being tracked.
-#    Homepage: https://github.com/krathalan/wtwitch
+#    Homepage: https://codeberg.org/krathalan/wtwitch
 #
 # Copyright (C) 2019-2023:
 readonly CONTRIBUTORS="krathalan, nycko123, Léo Villeveygoux, René de Hesselle, incompetentcoder, yazgoo, michaeldxyz, elig0n, ruitcatarino, kars0n777, 3ship"

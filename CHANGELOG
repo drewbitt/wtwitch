@@ -1,5 +1,5 @@
 See the full changelog for all versions at:
-https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
+https://codeberg.org/krathalan/wtwitch/src/branch/master/FULLCHANGELOG
 
 2.6.3 (July 22, 2023)
     Fix issue #24 (update to streamlink 6.0.0 breaks wtwitch) (PR#25)

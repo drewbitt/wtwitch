@@ -109,367 +109,428 @@ TRANSLATIONS="$(cat <<EOF
     "en": "media player not found",
     "de": "Mediaplayer nicht gefunden",
     "es": "reproductor de vídeo no encontrado",
-    "fr": "lecteur vidéo non trouvé"
+    "fr": "lecteur vidéo non trouvé",
+    "pt": "leitor multimédia não foi encontrado"
   },
   "change_player_warning": {
     "en": "Warning",
     "de": "Warnung",
     "es": "Advertencia",
-    "fr": "Attention"
+    "fr": "Attention",
+    "pt": "Aviso"
   },
   "change_player_player": {
     "en": "player",
     "de": "Mediaplayer",
     "es": "reproductor",
-    "fr": "lecteur"
+    "fr": "lecteur",
+    "pt": "leitor"
   },
   "change_player_warning_text": {
     "en": "may not work properly with Streamlink",
     "de": "funktioniert möglicherweise nicht richtig mit Streamlink",
     "es": "puede no funcionar correctamente con Streamlink",
-    "fr": "peut ne pas fonctionner correctement avec Streamlink"
+    "fr": "peut ne pas fonctionner correctement avec Streamlink",
+    "pt": "pode não funcionar correctamente com Streamlink"
   },
   "change_player_success": {
     "en": "Changed player to",
     "de": "Mediaplayer geändert zu",
-    "es": "Changed player to",
-    "fr": "Lecteur changé à"
+    "es": "Reproductor cambiado para",
+    "fr": "Lecteur changé à",
+    "pt": "Leitor alterado para"
   },
   "change_quality_error": {
     "en": "is not an acceptable quality. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst, and audio_only are acceptable qualities. You can specify fallback qualities separated by a comma, e.g. \"720p,480p,worst\"",
     "de": "ist keine verfügbare Qualitätsstufe. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst, und audio_only sind die verfügbaren Optionen. Du kannst auch eine kommaseparierte Liste angeben (absteigende Prioriät), z.B. \"720p,480p,worst\"",
-    "es": "is not an acceptable quality. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst, and audio_only are acceptable qualities. You can specify fallback qualities separated by a comma, e.g. \"720p,480p,worst\"",
-    "fr": "n'est pas une qualité acceptable. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst, et audio_only sont les qualités acceptables. Vous pouvez spécifier des qualités de repli séparées par des virgules, par exemple : \"720p,480p,worst\""
+    "es": "no es una calidad aceptable. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst y audio_only son cualidades aceptables. Puedes especificar cualidades alternativas separadas por una coma, por ejemplo: \"720p,480p,worst\"",
+    "fr": "n'est pas une qualité acceptable. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst, et audio_only sont les qualités acceptables. Vous pouvez spécifier des qualités de repli séparées par des virgules, par exemple : \"720p,480p,worst\"",
+    "pt": "não é uma qualidade aceitável. 1080p60, 720p60, 720p, 480p, 360p, 160p, best, worst e audio_only são qualidades aceitáveis. Pode especificar qualidades alternativas separadas por uma vírgula, por ex. \"720p,480p,worst\""
   },
   "change_quality_success": {
     "en": "Changed quality to",
     "de": "Qualität geändert zu",
-    "es": "Changed quality to",
-    "fr": "Qualité changée à"
+    "es": "Calidad cambiada para",
+    "fr": "Qualité changée à",
+    "pt": "Qualidade alterada para"
   },
   "check_online": {
     "en": "Live channels",
     "de": "Live Kanäle",
     "es": "Canales en directo",
-    "fr": "Chaînes en direct"
+    "fr": "Chaînes en direct",
+    "pt": "Canais em direto"
   },
   "check_offline": {
     "en": "Offline",
     "de": "Offline",
     "es": "Desconectado",
-    "fr": "Déconnecté"
+    "fr": "Déconnecté",
+    "pt": "Offline"
   },
   "check_settings": {
     "en": "Settings",
     "de": "Einstellungen",
     "es": "Ajuste",
-    "fr": "Configuration"
+    "fr": "Configuration",
+    "pt": "Definições"
   },
   "check_player": {
     "en": "Player set to",
     "de": "Mediaplayer ist eingestellt auf",
     "es": "Reproductor de vídeo configurado en",
-    "fr": "Lecteur configuré à"
+    "fr": "Lecteur configuré à",
+    "pt": "Leitor configurado para"
   },
   "check_quality": {
     "en": "Quality set to",
     "de": "Qualität ist eingestellt auf",
     "es": "Calidad configurado en",
-    "fr": "Qualité configurée à"
+    "fr": "Qualité configurée à",
+    "pt": "Qualidade configurada para"
   },
   "top_games": {
     "en": "Top games",
     "de": "Beliebteste Spiele",
     "es": "Juegos más populares",
-    "fr": "Jeux les plus populaires"
+    "fr": "Jeux les plus populaires",
+    "pt": "Jogos mais populares"
   },
   "top_streams": {
     "en": "Top channels",
     "de": "Beliebteste Kanäle",
     "es": "Canales más populares",
-    "fr": "Chaînes les plus populaires"
+    "fr": "Chaînes les plus populaires",
+    "pt": "Canais mais populares"
   },
   "viewers": {
     "en": "viewers",
     "de": "Zuschauer",
     "es": "espectadores",
-    "fr": "spectateurs"
+    "fr": "spectateurs",
+    "pt": "espectadores"
   },
   "channels": {
     "en": "channels",
     "de": "Kanäle",
     "es": "Canales de",
-    "fr": "Chaînes de"
+    "fr": "Chaînes de",
+    "pt": "canais de"
   },
   "no_channels": {
     "en": "No one is streaming",
     "de": "Niemand streamt gerade.",
-    "es": "No one is streaming",
-    "fr": "Personne n'est en direct"
+    "es": "Nadie está transmitiendo en vivo",
+    "fr": "Personne n'est en direct",
+    "pt": "Ninguém está em direto"
   },
   "error": {
     "en": "Error",
     "de": "Fehler",
     "es": "Error",
-    "fr": "Érreur"
+    "fr": "Érreur",
+    "pt": "Erro"
   },
   "print_help": {
     "en": "View the man page at",
     "de": "Lese die man page unter",
-    "es": "View the man page at",
-    "fr": "Voir le manuel à"
+    "es": "Consulte el manual en",
+    "fr": "Voir le manuel à",
+    "pt": "Ver manual em"
   },
   "stream_failure_player_one": {
     "en": "Player",
     "de": "Mediaplayer",
     "es": "Reproductor",
-    "fr": "Lecteur"
+    "fr": "Lecteur",
+    "pt": "Leitor"
   },
   "stream_failure_player_two": {
     "en": "not found",
     "de": "nicht gefunden",
     "es": "no encontrado",
-    "fr": "non trouvé"
+    "fr": "non trouvé",
+    "pt": "não encontrado"
   },
   "stream_failure_offline_one": {
     "en": "Streamer",
     "de": "Streamer",
     "es": "Streamer",
-    "fr": "La chaîne"
+    "fr": "La chaîne",
+    "pt": "Streamer"
   },
   "stream_failure_offline_two": {
     "en": "is not online",
     "de": "ist nicht online",
-    "es": "is not online",
-    "fr": "n'est pas en ligne"
+    "es": "no está en vivo",
+    "fr": "n'est pas en ligne",
+    "pt": "não está em direto"
   },
   "stream_failure_quality": {
     "en": "stream does not support quality",
     "de": "Stream unterstützt die angegebene Qualität nicht.",
-    "es": "stream does not support quality",
-    "fr": "n'est pas diffusé dans la qualité"
+    "es": "el stream no soporta esta calidad",
+    "fr": "n'est pas diffusé dans la qualité",
+    "pt": "a transmissão não suporta a qualidade"
   },
   "stream_failure_one": {
     "en": "watching",
     "de": "Beobachtung von",
     "es": "viendo",
-    "fr": "le visionnage de"
+    "fr": "le visionnage de",
+    "pt": "a visualizar"
   },
   "stream_failure_two": {
     "en": "failed",
     "de": "fehlgeschlagen",
     "es": "falló",
-    "fr": "a échoué"
+    "fr": "a échoué",
+    "pt": "falhou"
   },
   "stream_watching": {
     "en": "Watching",
     "de": "zuschauen",
     "es": "Viendo",
-    "fr": "Visionnage de"
+    "fr": "Visionnage de",
+    "pt": "A visualizar"
   },
   "stream_on_twitch": {
     "en": "on Twitch",
     "de": "auf Twitch",
     "es": "en Twitch",
-    "fr": "sur Twitch"
+    "fr": "sur Twitch",
+    "pt": "na Twitch"
   },
   "subscribe_failure": {
     "en": "You are already subscribed to",
     "de": "Du abonnierst bereits",
-    "es": "You are already subscribed to",
-    "fr": "Vous êtes déjà abonné à"
+    "es": "Ya estás suscrito a",
+    "fr": "Vous êtes déjà abonné à",
+    "pt": "Já está subscrito a"
   },
   "subscribe_success": {
     "en": "Subscribed to",
     "de": "Abonniert",
-    "es": "Subscribed to",
-    "fr": "Abonné à"
+    "es": "Suscrito a",
+    "fr": "Abonné à",
+    "pt": "Subscrito a"
   },
   "unsubscribe_failure": {
     "en": "You are not subscribed to",
     "de": "Du hast kein Abo für",
-    "es": "You are not subscribed to",
-    "fr": "Vous n'êtes pas abonné à"
+    "es": "No estás suscrito a",
+    "fr": "Vous n'êtes pas abonné à",
+    "pt": "Não está subscrito a"
   },
   "unsubscribe_success": {
     "en": "Unsubscribed from",
     "de": "Abo gecancelt",
-    "es": "Unsubscribed from",
-    "fr": "Désabonné de"
+    "es": "Suscripción cancelada a",
+    "fr": "Désabonné de",
+    "pt": "Deixou de seguir"
   },
   "colors_off": {
     "en": "Turned colors off",
     "de": "keine Farben benutzen",
     "es": "Apagó los colores",
-    "fr": "Couleurs désactivées"
+    "fr": "Couleurs désactivées",
+    "pt": "Cores desativadas"
   },
   "colors_on": {
     "en": "Turned colors on",
     "de": "Farben benutzen",
     "es": "Encendió los colores",
-    "fr": "Couleurs activées"
+    "fr": "Couleurs activées",
+    "pt": "Cores ativadas"
   },
   "offline_subs_off": {
     "en": "Turned printing offline subscriptions with [c]heck off",
     "de": "Offline Abos bei [c]heck anzeigen deaktiviert",
-    "es": "Turned printing offline subscriptions with [c]heck off",
-    "fr": "Turned printing offline subscriptions with [c]heck off"
+    "es": "Se ha desactivado la opción de mostrar suscripciones offline con [c]heck",
+    "fr": "Turned printing offline subscriptions with [c]heck off",
+    "pt": "A opção de mostrar subscrições offline com [c]heck foi desativada"
   },
   "offline_subs_on": {
     "en": "Turned printing offline subscriptions with [c]heck on",
     "de": "Offline Abos bei [c]heck anzeigen aktiviert",
-    "es": "Turned printing offline subscriptions with [c]heck on",
-    "fr": "Turned printing offline subscriptions with [c]heck on"
+    "es": "Se ha activado la opción de mostrar suscripciones offline con [c]heck",
+    "fr": "Turned printing offline subscriptions with [c]heck on",
+    "pt": "A opção de mostrar subscrições offline com [c]heck foi ativada"
   },
   "flags_no_game": {
     "en": "No game specified",
     "de": "Kein Spiel angegeben",
     "es": "No se especifica ningún juego",
-    "fr": "Pas de jeu spécifié"
+    "fr": "Pas de jeu spécifié",
+    "pt": "Nenhum jogo especificado"
   },
   "flags_no_player": {
     "en": "No player specified",
     "de": "Kein Spieler angegeben",
     "es": "No se especifica el reproductor de vídeo",
-    "fr": "Pas de lecteur vidéo spécifié"
+    "fr": "Pas de lecteur vidéo spécifié",
+    "pt": "Nenhum leitor especificado"
   },
   "flags_no_quality": {
     "en": "No quality specified",
     "de": "Keine Qualität angegeben",
     "es": "No se especifica la calidad",
-    "fr": "Pas de qualité spécifiée"
+    "fr": "Pas de qualité spécifiée",
+    "pt": "Nenhuma qualidade especificada"
   },
   "flags_no_streamer": {
     "en": "No streamer specified",
     "de": "Kein Kanal angegeben",
     "es": "No se especifica ningún canal",
-    "fr": "Pas de chaîne spécifiée"
+    "fr": "Pas de chaîne spécifiée",
+    "pt": "Nenhum canal especificado"
   },
   "flags_no_search_term": {
     "en": "No search term specified",
     "de": "Keine Suchbegriff angegeben",
     "es": "No search term specified",
-    "fr": "Aucun terme de recherche spécifié"
+    "fr": "Aucun terme de recherche spécifié",
+    "pt": "Nenhum termo de pesquisa especificado"
   },
   "no_subs": {
     "en": "You aren't subscribed to any channels",
     "de": "Du hast keine Kanäle aboniert.",
-    "es": "You aren't subscribed to any channels",
-    "fr": "Vous n'êtes abonné à aucune chaîne"
+    "es": "No estás suscrito a ningún canal",
+    "fr": "Vous n'êtes abonné à aucune chaîne",
+    "pt": "Não está subscrito a nenhum canal"
   },
   "twitch_api_limit": {
     "en": "Twitch API rate limit reached, or game/streamer does not exist",
     "de": "Twitch API Limit erreicht, oder Spiel/Streamer existiert nicht",
-    "es": "Twitch API rate limit reached, or game/streamer does not exist",
-    "fr": "Limite de débit de l'API Twitch atteinte, or game/streamer does not exist"
+    "es": "Se ha alcanzado el límite de la API de Twitch o el juego/streamer no existe",
+    "fr": "Limite de débit de l'API Twitch atteinte, or game/streamer does not exist",
+    "pt": "O limite da API da Twitch foi atingido ou o jogo/streamer não existe"
   },
   "last_seen": {
     "en": "last seen online",
     "de": "Zuletzt Online gesehen",
     "es": "last seen online",
-    "fr": "vu en ligne pour la dernière fois"
+    "fr": "vu en ligne pour la dernière fois",
+    "pt": "visto em direto pela última vez"
   },
   "removed": {
     "en": "Removed",
     "de": "Entfernt",
-    "es": "Removed",
-    "fr": ""
+    "es": "Eliminado",
+    "fr": "",
+    "pt": "Removido"
   },
   "added": {
     "en": "Added",
     "de": "Hinzugefügt",
     "es": "Added",
-    "fr": ""
+    "fr": "",
+    "pt": "Adicionado"
   },
   "from_blocklist": {
     "en": "from blocklist",
     "de": "Von Blockliste",
-    "es": "from blocklist",
-    "fr": "supprimé de la liste de blocage"
+    "es": "de la lista de bloqueados",
+    "fr": "supprimé de la liste de blocage",
+    "pt": "da lista de bloqueados"
   },
   "to_blocklist": {
     "en": "to blocklist",
     "de": "Zu Blockliste",
-    "es": "to blocklist",
-    "fr": "ajouté à la liste de blocage"
+    "es": "a la lista de bloqueados",
+    "fr": "ajouté à la liste de blocage",
+    "pt": "à lista de bloqueados"
   },
   "blocklist": {
     "en": "Blocklist",
     "de": "Blockliste",
-    "es": "Blocklist",
-    "fr": "Liste de blocage"
+    "es": "Lista de bloqueados",
+    "fr": "Liste de blocage",
+    "pt": "Lista de bloqueados"
   },
   "api_token_fetch_failure": {
     "en": "Failed to fetch API token",
     "de": "API token beziehen fehlgeschlagen",
-    "es": "Failed to fetch API token",
-    "fr": "Échec de l'obtention du jeton d'API"
+    "es": "Error al obtener el token de la API",
+    "fr": "Échec de l'obtention du jeton d'API",
+    "pt": "Erro ao obter o token da API"
   },
   "info_fetch_failure": {
     "en": "Failed to fetch information from the Twitch API",
     "de": "Information von Twitch API beziehen fehlgeschlagen",
     "es": "Failed to fetch information from the Twitch API",
-    "fr": "Échec de la récupération d'informations depuis l'API Twitch"
+    "fr": "Échec de la récupération d'informations depuis l'API Twitch",
+    "pt": "Falha ao obter informações da API Twitch"
   },
   "check_internet": {
     "en": "Check your internet connection and try again",
     "de": "Überprüfe Internetverbindung und versuche es erneut",
     "es": "Check your internet connection and try again",
-    "fr": "Vérifiez votre connexion Internet et réessayez"
+    "fr": "Vérifiez votre connexion Internet et réessayez",
+    "pt": "Verifique sua conexão com a Internet e tente novamente"
   },
   "search_results": {
     "en": "Search results",
     "de": "Suchergebnisse",
     "es": "Search results",
-    "fr": "Résultats de la recherche"
+    "fr": "Résultats de la recherche",
+    "pt": "Resultados de pesquisa"
   },
   "no_results": {
     "en": "No results",
     "de": "Keine Ergebnisse",
     "es": "No results",
-    "fr": "Aucun résultat"
+    "fr": "Aucun résultat",
+    "pt": "Sem resultados"
   },
   "live": {
     "en": "live",
     "de": "live",
     "es": "en directo",
-    "fr": "en direct"
+    "fr": "en direct",
+    "pt": "em direto"
   },
   "offline": {
     "en": "offline",
     "de": "offline",
     "es": "desconectado",
-    "fr": "déconnecté"
+    "fr": "déconnecté",
+    "pt": "offline"
   },
   "vod_failure_no_number": {
     "en": "No VOD number",
     "de": "Keine VOD Nummer",
     "es": "No VOD number",
-    "fr": "No VOD number"
+    "fr": "No VOD number",
+    "pt": "Nenhum número de VOD"
   },
   "press_n_next_page": {
     "en": "Press <N> to show the next page of streamers or press any other key to quit.",
     "de": "Drücke <N> um die nächste Seite Streamer anzuzeigen oder beliebige andere Taste zu beenden.",
-    "es": "Press <N> to show the next page of streamers or press any other key to quit.",
-    "fr": "Press <N> to show the next page of streamers or press any other key to quit."
+    "es": "Pulsa <N> para mostrar la siguiente página de streamers o cualquier otra tecla para salir.",
+    "fr": "Press <N> to show the next page of streamers or press any other key to quit.",
+    "pt": "Pressiona <N> para mostrar a próxima página de streamers ou qualquer outra tecla para sair."
   },
   "page": {
     "en": "Page",
     "de": "Seite",
     "es": "Página",
-    "fr": "Page"
+    "fr": "Page",
+    "pt": "Página"
   },
   "no_more_streamers": {
     "en": "No more streamers",
     "de": "No more streamers",
     "es": "No more streamers",
-    "fr": "No more streamers"
+    "fr": "No more streamers",
+    "pt": "Sem mais streamers"
   },
   "install_fzf_first": {
     "en": "You need to install fzf to use this feature.",
     "de": "You need to install fzf to use this feature.",
     "es": "You need to install fzf to use this feature.",
-    "fr": "You need to install fzf to use this feature."
+    "fr": "You need to install fzf to use this feature.",
+    "pt": "Precisa instalar fzf para usar este recurso."
   }
 }
 EOF
@@ -2088,7 +2149,7 @@ readonly TERMINAL_WIDTH
 
 # Default to English if language isn't supported
 case "${LANG%_*}" in
-  "de"|"es"|"fr")
+  "de"|"es"|"fr"|"pt")
     readonly WTWITCH_LANG="${LANG%_*}"
     ;;
   *)

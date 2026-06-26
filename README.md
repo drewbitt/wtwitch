@@ -126,7 +126,7 @@ If you provide a better method of installation for a distro other than Arch, suc
 
 ## FAQ
 ### Are you going to implement Twitch chat?
-No. Check out [Chatty](https://chatty.github.io/), a featureful Twitch chat client written in Java. It's available in the AUR: https://aur.archlinux.org/packages/chatty/
+No. Check out [Chatty](https://chatty.github.io/), a featureful Twitch chat client written in Java. It's available in the AUR: https://aur.archlinux.org/packages/java-chatty/
 
 ### Old signing key
 For releases before 2.0.0:

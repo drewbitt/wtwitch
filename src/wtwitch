@@ -667,7 +667,8 @@ get_game_name()
     fi
 
     # Cache result for future reference
-    tmpJson="$(jq ".data[.data | length] |= . + {\"${gameID}\":\"${gameName}\"}" "${CACHE_GAME_ID_FILE}")"
+    # Pass key/value with --arg instead of interpolating them into jq so game names with special characters (e.g. ") don't break it
+    tmpJson="$(jq --arg gid "${gameID}" --arg gname "${gameName}" '.data[.data | length] |= . + {($gid): $gname}' "${CACHE_GAME_ID_FILE}")"
     printf "%s" "${tmpJson}" > "${CACHE_GAME_ID_FILE}"
   fi
 
@@ -706,7 +707,8 @@ get_user_id()
     fi
 
     # Cache result for future reference
-    tmpJson="$(jq ".data[.data | length] |= . + {\"${userLogin}\":\"${userID}\"}" "${CACHE_USER_ID_FILE}")"
+    # Pass key/value with --arg instead of interpolating them into jq so user names with special characters (e.g. ") don't break it
+    tmpJson="$(jq --arg ul "${userLogin}" --arg uid "${userID}" '.data[.data | length] |= . + {($ul): $uid}' "${CACHE_USER_ID_FILE}")"
     printf "%s" "${tmpJson}" > "${CACHE_USER_ID_FILE}"
   fi
 

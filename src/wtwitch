@@ -1030,7 +1030,7 @@ open_selected_stream()
     exit_script_on_failure "$(get_translation install_fzf_first)"
   fi
 
-  stream="$(check_twitch_streams --online-only | fzf --ansi | sed 's/^ *\|[:(].*//g')"
+  stream="$(check_twitch_streams --online-only | fzf --ansi | cut -d: -f1 | sed 's/ *//')"
 
   if [ -n "$stream" ]; then
     watch_stream "$stream"

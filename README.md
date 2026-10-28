@@ -59,7 +59,17 @@ Wtwitch has the following commands:
 
 See [more information](#more-information) for help viewing the man page.
 
+For example, `wtwitch q audio_only` followed by `wtwitch v CHANNEL 1` opens the latest VOD with audio controls in mpv. Use `wtwitch q 480p30,best` for video with a fallback when that quality is unavailable. Quality names must match those offered by Streamlink.
+
+mpv reads VOD playlists directly for duration and seeking, bypassing Streamlink's segment processing. A VOD that is still recording has no final duration yet.
+
+Run the offline playback checks with `bash tests/playback.sh` (Bash 4.3+ and jq required).
+
 ## Install
+Wtwitch requires Bash 4.3+, GNU coreutils, curl, jq, Streamlink, and a compatible media player. mpv is the default; VLC is the automatic fallback if the configured player is unavailable. Use `wtwitch p vlc` to select VLC explicitly. The audio window and direct VOD playlist handling described above apply to mpv.
+
+You can launch wtwitch from Bash or zsh; its shebang runs Bash. Do not source it or run it with `sh` or `zsh`.
+
 ### Arch Linux
 Install the official AUR package, maintained by the author of wtwitch (me): https://aur.archlinux.org/packages/wtwitch/
 
@@ -84,7 +94,9 @@ Then add the `src/` directory in the cloned wtwitch repo to your `$PATH`. You ma
 ### macOS
 You need to install additional dependencies through e.g. [homebrew](https://brew.sh/):
 
-> `$ brew install bash coreutils curl jq streamlink`
+> `$ brew install bash coreutils curl jq streamlink mpv`
+
+Keep Homebrew's `bin` directory on your `PATH` so wtwitch uses the installed Bash instead of macOS's older `/bin/bash`.
 
 Afterwards, [clone the repo](#other_distros).
 

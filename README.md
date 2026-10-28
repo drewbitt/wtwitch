@@ -4,7 +4,7 @@
 
 A terminal program for Twitch. Watch and browse Twitch without proprietary JavaScript and without being tracked.
 
-This is a fork of [wtwitch on Codeberg](https://codeberg.org/krathalan/wtwitch). It adds VOD quality selection and seekable VOD playback in mpv, plus an mpv window for audio-only playback.
+A fork of [wtwitch on Codeberg](https://codeberg.org/krathalan/wtwitch) with fixes for VOD quality selection and mpv playback.
 
 ![Screenshot](https://krathalan.net/wtwitch1.webp)
 

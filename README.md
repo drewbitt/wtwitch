@@ -4,6 +4,8 @@
 
 A terminal program for Twitch. Watch and browse Twitch without proprietary JavaScript and without being tracked.
 
+This is a fork of [wtwitch on Codeberg](https://codeberg.org/krathalan/wtwitch). It adds VOD quality selection and seekable VOD playback in mpv, plus an mpv window for audio-only playback.
+
 ![Screenshot](https://krathalan.net/wtwitch1.webp)
 
 Table of contents:
@@ -75,7 +77,7 @@ You may need to install `curl` and `jq`. You may be able to install `streamlink`
 Afterwards, [clone the repo](#other_distros).
 
 ### Other distros
-Clone the repository: `git clone https://codeberg.org/krathalan/wtwitch`
+Clone the repository: `git clone https://github.com/drewbitt/wtwitch`
 
 Then add the `src/` directory in the cloned wtwitch repo to your `$PATH`. You may need to install `curl`, `jq`, and `streamlink`. See this page for distro-specific streamlink installation instructions: https://streamlink.github.io/install.html
 

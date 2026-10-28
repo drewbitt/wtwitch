@@ -1641,6 +1641,9 @@ stream()
   # If using mpv: add window title, enable hardware dec, and use wayland if possible
   if [[ "${userPlayer}" == "mpv" ]]; then
     playerArgs="--hwdec=auto"
+    if [[ ",${userQuality}," == *,audio_only,* ]]; then
+      playerArgs+=" --force-window=yes"
+    fi
 
     if [[ $(pgrep wayland) || $(pgrep sway) ]]; then
       playerArgs+=" --gpu-context=wayland"
@@ -1894,25 +1897,29 @@ list_vods()
       fi
     fi
 
-    # If using mpv, add auto hwdec and title, and enable wayland if it's running
+    local -a streamlinkArgs=(-p "${userPlayer}")
     if [[ "${userPlayer}" == "mpv" ]]; then
-      userPlayer+=" --hwdec=auto"
-
+      # Let mpv read the VOD playlist directly so duration and seeking work.
+      streamlinkArgs+=(--player-passthrough hls)
+      local playerArgs="--hwdec=auto"
+      if [[ ",${userQuality}," == *,audio_only,* ]]; then
+        playerArgs+=" --force-window=yes"
+      fi
       if [[ $(pgrep wayland) || $(pgrep sway) ]]; then
-        userPlayer+=" --gpu-context=wayland"
+        playerArgs+=" --gpu-context=wayland"
       fi
+      local vodTitle
+      vodTitle="$(jq -r .data[$(( $2 - 1 ))].title <<< "${tmpJson}")"
+      # Streamlink interprets braces in titles as metadata placeholders.
+      vodTitle="${vodTitle//\{/\{\{}"
+      vodTitle="${vodTitle//\}/\}\}}"
+      streamlinkArgs+=(-a "${playerArgs}" --title "${vodTitle}")
+    fi
 
-      if [[ "${DEBUGGING}" == "on" ]]; then
-        ${userPlayer} --title="$(jq -r .data[$(( $2 - 1 ))].title <<< "${tmpJson}")" "${vodURL}"
-      else
-        ${userPlayer} --title="$(jq -r .data[$(( $2 - 1 ))].title <<< "${tmpJson}")" "${vodURL}" &> /dev/null &
-      fi
+    if [[ "${userQuality}" == "audio_only" ]] || [[ "${DEBUGGING}" == "on" ]]; then
+      streamlink "${streamlinkArgs[@]}" "${vodURL}" "${userQuality}"
     else
-      if [[ "${DEBUGGING}" == "on" ]]; then
-        "${userPlayer}" "${vodURL}"
-      else
-        "${userPlayer}" "${vodURL}" &> /dev/null &
-      fi
+      streamlink "${streamlinkArgs[@]}" "${vodURL}" "${userQuality}" &> /dev/null &
     fi
   fi
 }

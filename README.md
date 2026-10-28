@@ -59,16 +59,12 @@ Wtwitch has the following commands:
 
 See [more information](#more-information) for help viewing the man page.
 
-For example, `wtwitch q audio_only` followed by `wtwitch v CHANNEL 1` opens the latest VOD with audio controls in mpv. Use `wtwitch q 480p30,best` for video with a fallback when that quality is unavailable. Quality names must match those offered by Streamlink.
+For audio-only VODs, run `wtwitch q audio_only` then `wtwitch v CHANNEL 1`. For video, try `wtwitch q 480p30,best`; quality names must match Streamlink.
 
-mpv reads VOD playlists directly for duration and seeking, bypassing Streamlink's segment processing. A VOD that is still recording has no final duration yet.
-
-Run the offline playback checks with `bash tests/playback.sh` (Bash 4.3+ and jq required).
+mpv provides an audio window and reads VOD playlists directly for seeking and duration, bypassing Streamlink's segment processing.
 
 ## Install
-Wtwitch requires Bash 4.3+, GNU coreutils, curl, jq, Streamlink, and a compatible media player. mpv is the default; VLC is the automatic fallback if the configured player is unavailable. Use `wtwitch p vlc` to select VLC explicitly. The audio window and direct VOD playlist handling described above apply to mpv.
-
-You can launch wtwitch from Bash or zsh; its shebang runs Bash. Do not source it or run it with `sh` or `zsh`.
+Requires Bash 4.3+, GNU coreutils, curl, jq, Streamlink, and a media player. mpv is the default, with VLC as a fallback (`wtwitch p vlc`). You can launch wtwitch normally from zsh; the script uses Bash.
 
 ### Arch Linux
 Install the official AUR package, maintained by the author of wtwitch (me): https://aur.archlinux.org/packages/wtwitch/
@@ -96,7 +92,7 @@ You need to install additional dependencies through e.g. [homebrew](https://brew
 
 > `$ brew install bash coreutils curl jq streamlink mpv`
 
-Keep Homebrew's `bin` directory on your `PATH` so wtwitch uses the installed Bash instead of macOS's older `/bin/bash`.
+Homebrew's Bash must precede `/bin/bash` on your `PATH`.
 
 Afterwards, [clone the repo](#other_distros).
 
@@ -133,6 +129,8 @@ Please file feature requests and report any bugs at: https://codeberg.org/kratha
 
 ## Contributions
 All contributions are welcome. Please try to adhere to the [Google Shell Style Guide](https://google.github.io/styleguide/shell.xml). Make sure your new code passes Shellcheck with no "shellcheck disable=SCXXXX" lines. Try looking at [Dylan's Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) before using an external program.
+
+Run `bash tests/playback.sh` for offline CLI regression checks (Bash 4.3+ and jq required).
 
 Most needed are translations for languages other than English. No coding knowledge is necessary to submit translations. Anyone can contribute translations in any format they wish, and I will incorporate them into the program.
 

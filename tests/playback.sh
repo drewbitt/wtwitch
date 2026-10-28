@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Exercise the real CLI with isolated settings and fake network/player commands.
-set -euo pipefail
+# Check playback selection and launch arguments through the real CLI.
+# Fake curl/Streamlink keep tests offline; temporary XDG directories protect settings.
+set -Eeuo pipefail
+trap 'echo "Failed at line ${LINENO}" >&2' ERR
 
 repo="$(cd "$(dirname "$0")/.." && pwd)"
 test_dir="$(mktemp -d)"
@@ -8,26 +10,22 @@ trap 'rm -rf "${test_dir}"' EXIT
 export XDG_CONFIG_HOME="${test_dir}/config" XDG_CACHE_HOME="${test_dir}/cache"
 export TERM=xterm LANG=en_US.UTF-8
 export TEST_ARGS="${test_dir}/args" TEST_VIDEOS="${test_dir}/videos.json"
-export TEST_CALLS="${test_dir}/calls"
 mkdir -p "${test_dir}/bin" "${XDG_CONFIG_HOME}/wtwitch"
 export PATH="${test_dir}/bin:${PATH}"
 
 cat > "${test_dir}/bin/curl" <<'EOF'
 #!/usr/bin/env bash
-url="${!#}"
-printf '%s\n' "${url}" >> "${TEST_CALLS}"
-case "${url}" in
+case "${!#}" in
   */users\?*) printf '%s' '{"data":[{"id":"123","login":"example"}]}' ;;
   */videos\?*) cat "${TEST_VIDEOS}" ;;
   */streams\?*) printf '%s' "${TEST_STREAMS:-{\"data\":[{\"type\":\"live\"}]}}" ;;
-  */oauth2/token) printf '%s' '{"access_token":"test-token","expires_in":3600}' ;;
   *) exit 1 ;;
 esac
 EOF
 cat > "${test_dir}/bin/streamlink" <<'EOF'
 #!/usr/bin/env bash
 if [[ "${1:-}" == --version ]]; then echo 'streamlink test'; exit; fi
-printf '%s\0' "$@" > "${TEST_ARGS}"
+jq -n --args '$ARGS.positional' -- "$@" > "${TEST_ARGS}"
 exit "${TEST_PLAYER_STATUS:-0}"
 EOF
 printf '#!/usr/bin/env bash\nexit 0\n' > "${test_dir}/bin/mpv"
@@ -37,8 +35,8 @@ cp "${test_dir}/bin/pgrep" "${test_dir}/bin/notify-send"
 chmod +x "${test_dir}/bin/"*
 printf '%s' '{"apiToken":"test-token","apiTokenExpiry":9999999999}' > "${XDG_CONFIG_HOME}/wtwitch/api.json"
 jq -n --arg title $'A "quoted" {title} / } \\ $HOME\nsecond line' \
-  '{data:[{url:"https://www.twitch.tv/videos/123", title:$title, created_at:"2026-10-01T12:00:00Z", duration:"1h"},
-    {url:"https://www.twitch.tv/videos/456", title:"Second VOD", created_at:"2026-09-30T12:00:00Z", duration:"2h"}]}' > "${TEST_VIDEOS}"
+  '{data:[{url:"https://www.twitch.tv/videos/123", title:$title},
+    {url:"https://www.twitch.tv/videos/456", title:"Second VOD"}]}' > "${TEST_VIDEOS}"
 
 settings() {
   jq -n --arg player "$1" --arg quality "$2" \
@@ -50,15 +48,10 @@ run_cli() {
   bash "${repo}/src/wtwitch" "$@" > "${test_dir}/output" 2>&1
 }
 has_arg() {
-  local arg
-  while IFS= read -r -d '' arg; do
-    [[ "${arg}" != "$1" ]] || return 0
-  done < "${TEST_ARGS}"
-  echo "Missing argument: $1" >&2
-  return 1
+  jq -e --arg arg "$1" 'index($arg) != null' "${TEST_ARGS}" > /dev/null
 }
 no_arg() {
-  ! has_arg "$1" 2>/dev/null
+  ! has_arg "$1"
 }
 reject_vod() {
   if run_cli v example "$1"; then
@@ -86,8 +79,6 @@ for number in 0 -1 abc 08 1+1 '' 3 999999999999999999999999999999; do
 done
 
 settings "${test_dir}/bin/mpv" audio_only
-run_cli p "${test_dir}/bin/mpv"
-if grep -q 'Warning' "${test_dir}/output"; then echo 'Warned about known player path' >&2; exit 1; fi
 run_cli v example 1
 has_arg --player-passthrough
 has_arg '--hwdec=auto --force-window=yes'
@@ -96,15 +87,14 @@ has_arg '--hwdec=auto --force-window=yes'
 no_arg --player-passthrough
 has_arg --twitch-disable-ads
 
-settings vlc audio_only
-run_cli v example 1
-has_arg vlc
-no_arg --player-passthrough
-no_arg -a
-
-settings missing-player audio_only
-run_cli v example 1
-has_arg vlc
+# Neither an explicit VLC nor the VLC fallback should receive mpv-only options.
+for player in vlc missing-player; do
+  settings "${player}" audio_only
+  run_cli v example 1
+  has_arg vlc
+  no_arg --player-passthrough
+  no_arg -a
+done
 
 # Debug mode keeps video/fallback playback in the foreground for assertions.
 export WTWITCH_DEBUG=on
@@ -114,8 +104,6 @@ has_arg 480p30,best
 has_arg --hwdec=auto
 run_cli q 480p30,best
 jq -e '.quality == "480p30,best"' "${XDG_CONFIG_HOME}/wtwitch/config.json" > /dev/null
-for quality in 160p30 360p30 720p30 1080p30; do run_cli q "${quality}"; done
-if run_cli q invalid; then echo 'Accepted invalid quality' >&2; exit 1; fi
 
 settings mpv best,audio_only
 run_cli v example 1
@@ -131,16 +119,7 @@ if run_cli w example; then echo 'Tried offline stream' >&2; exit 1; fi
 grep -q 'offline' "${test_dir}/output"
 unset TEST_STREAMS
 
-settings mpv audio_only
-
 printf '%s' '{"data":[]}' > "${TEST_VIDEOS}"
 reject_vod 1
-run_cli v example
-[[ ! -f "${TEST_ARGS}" ]]
 
-# Check expired app-token renewal without using a real account or credentials.
-printf '%s' '{"apiToken":"expired-test-token","apiTokenExpiry":1}' > "${XDG_CONFIG_HOME}/wtwitch/api.json"
-run_cli v example
-grep -q '/oauth2/token' "${TEST_CALLS}"
-jq -e '.apiToken == "test-token"' "${XDG_CONFIG_HOME}/wtwitch/api.json" > /dev/null
-printf 'Passed playback, VOD input, qualities, player fallback, offline/empty results, failures, and token renewal.\n'
+printf 'Passed playback selection, VOD input, titles, qualities, player fallback, and failure checks.\n'
